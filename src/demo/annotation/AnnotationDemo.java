@@ -1,8 +1,12 @@
+package demo.annotation;
+
+import demo.BaseDemo;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
 @JavaFileInfo
-public class AnnotationDemoClass implements BaseDemoClass {
+public class AnnotationDemo implements BaseDemo {
 
     @JavaFileInfo(author = "marco", version = "1.0")
     public String getString() {
@@ -22,13 +26,13 @@ public class AnnotationDemoClass implements BaseDemoClass {
     }
 
     @Override
-    public void runDemo() {
-        AnnotationDemoClass annotationDemoClass = new AnnotationDemoClass();
+    public void runDemo(String[] args) {
+        AnnotationDemo annotationDemoClass = new AnnotationDemo();
 
-        AnnotationDemoClass.readAnnotationOn(annotationDemoClass.getClass());
+        AnnotationDemo.readAnnotationOn(annotationDemoClass.getClass());
 
         try {
-            AnnotationDemoClass.readAnnotationOn(annotationDemoClass.getClass().getMethod("getString", new Class[]{}));
+            AnnotationDemo.readAnnotationOn(annotationDemoClass.getClass().getMethod("getString", new Class[]{}));
         } catch (NoSuchMethodException e) {
             e.printStackTrace();
         }
